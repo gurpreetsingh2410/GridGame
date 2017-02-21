@@ -8,9 +8,8 @@ public class dotCom {
         Scanner sc = new Scanner(System.in);
         dotComGame dgame = new dotComGame();
 
-        for(int i =1; i>0; i++){
-            System.out.printf("Please enter any number to play this game\n");
-            dgame.checkGuess(sc.nextInt());
-        }
+        System.out.printf("Please enter any number to play this game\n");
+        String result = dgame.checkGuess(sc.nextInt());
+
     }
 }
