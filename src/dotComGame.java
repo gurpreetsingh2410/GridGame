@@ -1,31 +1,32 @@
+import java.util.ArrayList;
 /**
  * Created by root on 18/02/17.
  */
 public class dotComGame {
-    int[] location;
+
+
+    ArrayList<String> location = new ArrayList<>();
     int numOfHit = 0;
     int numOfGuess = 0;
 
-    public void randLocation() {
-        int num = (int) ((Math.random()) * 5);
-        location = new int[]{num, num + 1, num + 2};
+    public void setLocation() {
+        this.location = location;
+        location.add("1");
+        location.add("2");
+        location.add("3");
     }
 
     public String checkGuess(int guess) {
         String result = "miss";
-        for (int cell : location) {
-            if (guess == cell) {
-                result = "hit";
-                numOfHit++;
-                break;
+        int indexOfCell = location.indexOf(String.valueOf(guess));
+        if(indexOfCell >= 0){
+            location.remove(indexOfCell);
+            if(location.isEmpty()) {
+                result = "kill";
+                }else {
+                    result ="hit";
+                }
             }
-        }
-        numOfGuess++;
-
-        if (numOfHit == location.length) {
-            result = "kill";
-            System.out.println("You took "+ numOfGuess+ " guesses");
-        }
         System.out.println(result);
         return result;
     }
